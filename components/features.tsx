@@ -1,60 +1,53 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import {
-  BookCheck,
-  ChartPie,
-  FolderSync,
-  Goal,
-  Users,
-  Zap,
-} from "lucide-react";
+import { ClipboardCopy, FileText, Upload, Download, Share, Archive } from "lucide-react"; // New icons
 
 const features = [
   {
-    icon: Goal,
-    title: "Identify Opportunities",
+    icon: ClipboardCopy,
+    title: "Copy Content",
     description:
-      "Easily uncover untapped areas to explore and expand your reach effortlessly.",
+      "Quickly copy your desired text or code with ease and store it for later use.",
   },
   {
-    icon: BookCheck,
-    title: "Build Authority",
+    icon: FileText,
+    title: "Save Snippets",
     description:
-      "Create valuable content that resonates, inspires trust, and positions you as an expert.",
+      "Organize and save important content snippets in an easily accessible format.",
   },
   {
-    icon: ChartPie,
-    title: "Instant Insights",
+    icon: Upload,
+    title: "Upload Files",
     description:
-      "Gain immediate, actionable insights with a quick glance, enabling fast decision-making.",
+      "Effortlessly upload content from your device and store it securely in your clipboard tool.",
   },
   {
-    icon: Users,
-    title: "Engage with Your Audience",
+    icon: Download,
+    title: "Download Clips",
     description:
-      "Boost audience engagement with interactive features like polls, quizzes, and forms.",
+      "Download your saved content in various formats for offline use or sharing.",
   },
   {
-    icon: FolderSync,
-    title: "Automate Your Workflow",
+    icon: Share,
+    title: "Share Clips",
     description:
-      "Streamline your processes by automating repetitive tasks, saving time and reducing effort.",
+      "Share your saved clips easily with others through various platforms and channels.",
   },
   {
-    icon: Zap,
-    title: "Accelerate Growth",
+    icon: Archive,
+    title: "Archive Clips",
     description:
-      "Supercharge your growth by implementing strategies that drive results quickly and efficiently.",
+      "Store old or unused clips in an archive to keep your clipboard organized and tidy.",
   },
 ];
 
-const Features = () => {
+const NabclipsFeatures = () => {
   return (
     <div
       id="features"
       className="max-w-screen-xl mx-auto w-full py-12 xs:py-20 px-6"
     >
       <h2 className="text-3xl xs:text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight sm:max-w-xl sm:text-center sm:mx-auto">
-        Boost Your Strategy with Smart Features
+        Unlock Powerful Clipboard Features with Nabclips
       </h2>
       <div className="mt-8 xs:mt-14 w-full mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
         {features.map((feature) => (
@@ -81,4 +74,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default NabclipsFeatures;
