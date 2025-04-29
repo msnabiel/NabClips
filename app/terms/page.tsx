@@ -1,8 +1,6 @@
 import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { Card, CardHeader, CardContent } from "@/components/ui/card"; // Correct component names
-// Removed Button import as it's unused
-// Removed Typography import as it's causing issues
 
 export default function TermsPage() {
   return (
@@ -30,14 +28,14 @@ export default function TermsPage() {
           <CardContent>
             <p>
               As a user of Nabclips, you agree to:
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Provide accurate and complete information when creating an account.</li>
-                <li>Respect other users and refrain from any illegal or disruptive activities.</li>
-                <li>Not to engage in any form of copyright infringement or distribution of unauthorized content.</li>
-                <li>Maintain the confidentiality of your account and password, and promptly notify us of any unauthorized use.</li>
-                <li>Comply with all applicable laws, regulations, and rules when using the platform.</li>
-              </ul>
             </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Provide accurate and complete information when creating an account.</li>
+              <li>Respect other users and refrain from any illegal or disruptive activities.</li>
+              <li>Not to engage in any form of copyright infringement or distribution of unauthorized content.</li>
+              <li>Maintain the confidentiality of your account and password, and promptly notify us of any unauthorized use.</li>
+              <li>Comply with all applicable laws, regulations, and rules when using the platform.</li>
+            </ul>
           </CardContent>
         </Card>
 
@@ -70,13 +68,13 @@ export default function TermsPage() {
           <CardContent>
             <p>
               You agree not to:
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Upload content that is harmful, offensive, or violates the rights of others, including defamatory, obscene, or unlawful material.</li>
-                <li>Use the platform for spamming, phishing, or other malicious activities that could disrupt the platform&apos;s functionality or harm other users.</li>
-                <li>Engage in any activity that disrupts the platform&apos;s functionality or the experience of other users, including exploiting bugs or vulnerabilities.</li>
-                <li>Impersonate any person or entity or falsely state or misrepresent your affiliation with a person or entity.</li>
-              </ul>
             </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Upload content that is harmful, offensive, or violates the rights of others, including defamatory, obscene, or unlawful material.</li>
+              <li>Use the platform for spamming, phishing, or other malicious activities that could disrupt the platform&apos;s functionality or harm other users.</li>
+              <li>Engage in any activity that disrupts the platform&apos;s functionality or the experience of other users, including exploiting bugs or vulnerabilities.</li>
+              <li>Impersonate any person or entity or falsely state or misrepresent your affiliation with a person or entity.</li>
+            </ul>
           </CardContent>
         </Card>
 
@@ -130,8 +128,7 @@ export default function TermsPage() {
           </CardHeader>
           <CardContent>
             <p>
-            If you have any questions about these Terms, please contact us at <a href="https://github.com/msnabiel/nabclips" className="text-blue-600">our GitHub repository</a>. We are happy to assist you with any inquiries or concerns you may have regarding the platform or these Terms of Service.
-
+              If you have any questions about these Terms, please contact us at <a href="https://github.com/msnabiel/nabclips" className="text-blue-600">our GitHub repository</a>. We are happy to assist you with any inquiries or concerns you may have regarding the platform or these Terms of Service.
             </p>
           </CardContent>
         </Card>
