@@ -72,8 +72,8 @@ export default function TermsPage() {
               You agree not to:
               <ul className="list-disc pl-5 space-y-2">
                 <li>Upload content that is harmful, offensive, or violates the rights of others, including defamatory, obscene, or unlawful material.</li>
-                <li>Use the platform for spamming, phishing, or other malicious activities that could disrupt the platform's functionality or harm other users.</li>
-                <li>Engage in any activity that disrupts the platform’s functionality or the experience of other users, including exploiting bugs or vulnerabilities.</li>
+                <li>Use the platform for spamming, phishing, or other malicious activities that could disrupt the platform&apos;s functionality or harm other users.</li>
+                <li>Engage in any activity that disrupts the platform&apos;s functionality or the experience of other users, including exploiting bugs or vulnerabilities.</li>
                 <li>Impersonate any person or entity or falsely state or misrepresent your affiliation with a person or entity.</li>
               </ul>
             </p>
@@ -97,7 +97,7 @@ export default function TermsPage() {
           </CardHeader>
           <CardContent>
             <p>
-              Nabclips will not be held liable for any indirect, incidental, special, or consequential damages arising from the use of the platform or any content uploaded to the platform. Users are responsible for their actions and content uploaded to the platform. The platform is provided "as is," and Nabclips makes no warranties or representations regarding its accuracy, reliability, or availability.
+              Nabclips will not be held liable for any indirect, incidental, special, or consequential damages arising from the use of the platform or any content uploaded to the platform. Users are responsible for their actions and content uploaded to the platform. The platform is provided &quot;as is,&quot; and Nabclips makes no warranties or representations regarding its accuracy, reliability, or availability.
             </p>
           </CardContent>
         </Card>
