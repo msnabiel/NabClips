@@ -19,7 +19,7 @@ const Hero = () => {
             Practice curated MCQs, track your progress, and master the STS syllabus with focused study material—all built by a VIT student for VIT students.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row items-center gap-4">
-            <Link href="/quiz">
+            <Link href="/practice">
               <Button
                 size="lg"
                 className="w-full sm:w-auto rounded-full text-base"

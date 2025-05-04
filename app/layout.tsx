@@ -9,7 +9,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Nabprep- Your STS Prep Companion",
+  title: "NabSTS- Your STS Prep Companion",
   description:
     "Practice curated MCQs, track your progress, and master the STS syllabus with focused study material—all built by a VIT student for VIT students.",
   keywords: [

@@ -1,6 +1,6 @@
 
 import Footer from "@/components/footer";
-import NabprepsCourse from "@/components/course-code";
+import NabSTSsCourse from "@/components/course-code";
 import { Navbar } from "@/components/navbar";
 
 //import { Card } from "@/components/ui/card";
@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-        <NabprepsCourse />
+        <NabSTSsCourse />
       <Footer />
     </>
   );

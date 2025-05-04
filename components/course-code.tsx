@@ -8,11 +8,11 @@ const features = [
     title: "STS302P - 6th Semester Course",
     description:
       "A soft skills course focused on communication, problem-solving, and leadership for professional growth.",
-    link: "/sts302P-course",  // Update this link as needed
+    link: "/practice/sts302p",  // Update this link as needed
   },
 ];
 
-const NabprepsCourse = () => {
+const NabSTSsCourse = () => {
   return (
     <div
       id="features"
@@ -45,4 +45,4 @@ const NabprepsCourse = () => {
   );
 };
 
-export default NabprepsCourse;
+export default NabSTSsCourse;

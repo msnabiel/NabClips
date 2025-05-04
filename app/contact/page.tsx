@@ -55,7 +55,7 @@ export default function ContactUsPage() {
         <div className="text-center text-gray-600 text-sm">
           Or email us directly at{" "}
           <a href="mailto:msyednabiel@gmail.com" className="text-blue-600 hover:underline">
-            support@nabclips.com
+            msyednabiel@gmail.com
           </a>
         </div>
       </div>

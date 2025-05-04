@@ -16,7 +16,7 @@ export default function CookiesPage() {
           </CardHeader>
           <CardContent>
             <p>
-              This Cookies Policy explains how Nabpreps uses cookies and similar technologies to recognize you when you visit our platform. It outlines the types of cookies we use, the information they collect, and your choices regarding cookies.
+              This Cookies Policy explains how NabSTSs uses cookies and similar technologies to recognize you when you visit our platform. It outlines the types of cookies we use, the information they collect, and your choices regarding cookies.
             </p>
           </CardContent>
         </Card>
@@ -99,7 +99,7 @@ export default function CookiesPage() {
           </CardHeader>
           <CardContent>
             <p>
-              If you have any questions or concerns about this Cookies Policy or how we use cookies, please contact us at <a href="https://github.com/msnabiel/nabclips" className="text-blue-600">our GitHub repository</a>.
+              If you have any questions or concerns about this Cookies Policy or how we use cookies, please contact us at <a href="https://github.com/msnabiel/NabSTS" className="text-blue-600">our GitHub repository</a>.
             </p>
           </CardContent>
         </Card>

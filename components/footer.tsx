@@ -209,7 +209,7 @@ const Footer = () => {
         <span className="text-muted-foreground text-center xs:text-start">
           &copy; {new Date().getFullYear()}{" "}
           <Link href="https://shadcnui-blocks.com" target="_blank">
-            NabClip
+            NabSTS
           </Link>
           . All rights reserved.
         </span>

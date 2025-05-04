@@ -114,7 +114,7 @@ export default function PrivacyPage() {
           </CardHeader>
           <CardContent>
             <p>
-              For any questions or concerns regarding this Privacy Policy or the STS platform, please visit <a href="https://github.com/msnabiel/nabclips" className="text-blue-600">our GitHub repository</a>.
+              For any questions or concerns regarding this Privacy Policy or the STS platform, please visit <a href="https://github.com/msnabiel/NabSTS" className="text-blue-600">our GitHub repository</a>.
             </p>
           </CardContent>
         </Card>

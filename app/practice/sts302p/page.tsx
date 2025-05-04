@@ -162,7 +162,7 @@ const QuizApp = () => {
                 <Card key={questionIndex} className="mb-6">
                   <CardHeader>
                     <CardTitle className="text-lg">Question {questionIndex + 1}</CardTitle>
-                    <CardDescription className="text-base font-medium text-black">
+                    <CardDescription className="text-base font-medium">
                       {question.question}
                     </CardDescription>
                   </CardHeader>

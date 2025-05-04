@@ -109,7 +109,7 @@ export default function TermsPage() {
           </CardHeader>
           <CardContent>
             <p>
-              For questions regarding these terms, please contact us via <a href="https://github.com/msnabiel/nabclips" className="text-blue-600">our GitHub repository</a>.
+              For questions regarding these terms, please contact us via <a href="https://github.com/msnabiel/NabSTS" className="text-blue-600">our GitHub repository</a>.
             </p>
           </CardContent>
         </Card>
