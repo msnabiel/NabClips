@@ -16,7 +16,7 @@ export default function CookiesPage() {
           </CardHeader>
           <CardContent>
             <p>
-              This Cookies Policy explains how Nabclips uses cookies and similar technologies to recognize you when you visit our platform. It outlines the types of cookies we use, the information they collect, and your choices regarding cookies.
+              This Cookies Policy explains how Nabpreps uses cookies and similar technologies to recognize you when you visit our platform. It outlines the types of cookies we use, the information they collect, and your choices regarding cookies.
             </p>
           </CardContent>
         </Card>
