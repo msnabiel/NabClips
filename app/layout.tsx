@@ -9,9 +9,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Beautiful Shadcn UI Landing Page",
+  title: "Nabprep- Your STS Prep Companion",
   description:
-    "A beautiful landing page built with Shadcn UI, Next.js 15, Tailwind CSS, and Shadcn UI Blocks.",
+    "Practice curated MCQs, track your progress, and master the STS syllabus with focused study material—all built by a VIT student for VIT students.",
   keywords: [
     "Shadcn UI Landing Page",
     "Shadcn UI Blocks",
