@@ -39,7 +39,7 @@ const Hero = () => {
             </Link>
           </div>
         </div>
-        <div className="relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square">
+        <div className="relative w-full h-[400px] sm:aspect-square bg-accent rounded-xl lg:max-w-lg xl:max-w-xl">
           {/*<Image
             src="/placeholder.svg" // Replace with a relevant image if available
             fill
