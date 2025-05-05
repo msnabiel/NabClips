@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import {
   Sheet,
   SheetContent,
@@ -29,7 +30,9 @@ export const NavigationSheet = () => {
           <Button variant="outline" className="w-full sm:hidden">
             Sign In
           </Button>
-          <Button className="w-full xs:hidden">Get Started</Button>
+          <Link href="/practice">
+  <Button className="hidden xs:inline-flex">Get Started</Button>
+</Link>
         </div>
       </SheetContent>
     </Sheet>

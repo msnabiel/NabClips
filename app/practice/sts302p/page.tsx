@@ -66,6 +66,17 @@ const QuizApp = () => {
     setSubmitted(false);
   }, [selectedTopic]);
 
+/*************  ✨ Windsurf Command ⭐  *************/
+/**
+ * Updates the user's answer for a specific question.
+ *
+ * @param questionIndex - The index of the question being answered.
+ * @param answer - The answer provided by the user.
+ * 
+ * This function will not update the answer if the quiz has already been submitted.
+ */
+
+/*******  4c730eaa-82bf-4c86-bed2-8d17bb637a4b  *******/
   const handleAnswerChange = (questionIndex: number, answer: string) => {
     if (submitted) return;
     setUserAnswers(prev => ({
