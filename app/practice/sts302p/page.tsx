@@ -21,83 +21,88 @@ import { questionsByTopic } from "../../../data/sts302p";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
 
-/*************  ✨ Windsurf Command ⭐  *************/
-/**
- * QuizApp is a functional component that renders a quiz application.
- * It allows users to select a topic, answer questions, and see their score.
- * 
- * State:
- * - selectedTopic: The topic selected by the user.
- * - userAnswers: An object storing user's answers to the questions.
- * - showAnswers: A boolean indicating if the answers should be shown.
- * - score: The user's score based on correct answers.
- * - submitted: A boolean indicating if the quiz has been submitted.
- * 
- * Effects:
- * - Resets the quiz state whenever a new topic is selected.
- * 
- * Handlers:
- * - handleAnswerChange: Updates user's answer for a given question.
- * - handleSubmit: Calculates score and marks the quiz as submitted.
- * - resetQuiz: Resets the quiz to its initial state.
- * - toggleShowAnswers: Toggles the visibility of the correct answers.
- * 
- * UI:
- * - Displays a dropdown to select a topic.
- * - Renders questions and options based on the selected topic.
- * - Shows quiz results and feedback after submission.
- */
-
-/*******  ac66a984-4220-4f52-9917-f3f7ddee41b7  *******/
-const QuizApp = () => {
-  const actualTopics = Object.keys(questionsByTopic); // Original topics
-  const ALL_TOPICS = "All Topics"; // Constant for "All Topics" option
-  const topics = [ALL_TOPICS, ...actualTopics];
-
-  const [selectedTopic, setSelectedTopic] = useState<string>(actualTopics[0] || '');
-  const [userAnswers, setUserAnswers] = useState<{ [key: number]: string }>({});
-  const [showAnswers, setShowAnswers] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
-  const [submitted, setSubmitted] = useState<boolean>(false);
-
-  // Get questions based on selected topic
-  // Define the Question type interface
+// Define Question interface
 interface Question {
   question: string;
   options: string[];
   answer: string;
 }
 
-const getQuestions = (): Question[] => {
-    if (selectedTopic === ALL_TOPICS) {
-      // Combine all questions from all topics
-      let allQuestions: Question[] = [];
-      actualTopics.forEach(topic => {
-        allQuestions = [...allQuestions, ...questionsByTopic[topic]];
-      });
-      return allQuestions;
+// Type-safe shuffle function with generic parameter
+const shuffleArray = <T,>(array: T[]): T[] => {
+  // Create a copy of the array to avoid mutation
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+};
+
+const QuizApp = () => {
+  const ALL_TOPICS = "All Topics";
+  const actualTopics = Object.keys(questionsByTopic);
+  const topics = [ALL_TOPICS, ...actualTopics];
+
+  const [selectedTopic, setSelectedTopic] = useState<string>(ALL_TOPICS);
+  const [userAnswers, setUserAnswers] = useState<{ [key: number]: string }>({});
+  const [showAnswers, setShowAnswers] = useState<boolean>(false);
+  const [score, setScore] = useState<number>(0);
+  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [isClient, setIsClient] = useState(false);
+
+  // Move question generation to useEffect to ensure it only runs on the client
+  useEffect(() => {
+    // Mark that we're on the client side
+    setIsClient(true);
+    
+    // Load saved topic from localStorage
+    const savedTopic = localStorage.getItem("selectedTopic");
+    if (savedTopic && topics.includes(savedTopic)) {
+      setSelectedTopic(savedTopic);
     }
-    return questionsByTopic[selectedTopic] || [];
+
+    // Initialize with empty quiz state
+    resetQuizState();
+  }, []);
+
+  // Generate questions whenever the selected topic changes
+  useEffect(() => {
+    if (isClient) {
+      generateQuestions();
+    }
+  }, [selectedTopic, isClient]);
+
+  const generateQuestions = () => {
+    let allQuestions: Question[] = [];
+
+    if (selectedTopic === ALL_TOPICS) {
+      actualTopics.forEach(topic => {
+        allQuestions = [...allQuestions, ...(questionsByTopic[topic] || [])];
+      });
+    } else {
+      allQuestions = questionsByTopic[selectedTopic] || [];
+    }
+
+    // Only shuffle on the client side
+    const shuffledQuestions = shuffleArray(allQuestions);
+    
+    // Shuffle options for each question
+    shuffledQuestions.forEach(question => {
+      question.options = shuffleArray([...question.options]);
+    });
+
+    setQuestions(shuffledQuestions);
   };
 
-  useEffect(() => {
+  const resetQuizState = () => {
     setUserAnswers({});
     setShowAnswers(false);
     setScore(0);
     setSubmitted(false);
-  }, [selectedTopic]);
+  };
 
-/*************  ✨ Windsurf Command ⭐  *************/
-/**
- * Updates the user's answer for a specific question.
- *
- * @param questionIndex - The index of the question being answered.
- * @param answer - The answer provided by the user.
- * 
- * This function will not update the answer if the quiz has already been submitted.
- */
-
-/*******  4c730eaa-82bf-4c86-bed2-8d17bb637a4b  *******/
   const handleAnswerChange = (questionIndex: number, answer: string) => {
     if (submitted) return;
     setUserAnswers(prev => ({
@@ -110,8 +115,6 @@ const getQuestions = (): Question[] => {
     if (!selectedTopic) return;
 
     let correctCount = 0;
-    const questions = getQuestions();
-
     questions.forEach((question, index) => {
       if (userAnswers[index] === question.answer) {
         correctCount++;
@@ -123,17 +126,34 @@ const getQuestions = (): Question[] => {
   };
 
   const resetQuiz = () => {
-    setUserAnswers({});
-    setShowAnswers(false);
-    setScore(0);
-    setSubmitted(false);
+    resetQuizState();
+    generateQuestions();
   };
-  
+
   const toggleShowAnswers = () => {
     setShowAnswers(prev => !prev);
   };
 
-  const questions = getQuestions();
+  const handleTopicChange = (topic: string) => {
+    setSelectedTopic(topic);
+    resetQuizState();
+    localStorage.setItem("selectedTopic", topic);
+  };
+
+  // Show loading placeholder during SSR or before client hydration
+  if (!isClient) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-1">
+          <div className="container mx-auto p-4 max-w-4xl">
+            <h1 className="text-3xl font-bold mb-6 text-center">Loading Quiz...</h1>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -144,18 +164,18 @@ const getQuestions = (): Question[] => {
           <h1 className="text-3xl font-bold mb-6 text-center">Select your topic</h1>
 
           <div className="mb-8">
-          <Select onValueChange={setSelectedTopic} value={selectedTopic}>
-            <SelectTrigger className="w-full">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {topics.map((topic) => (
-                <SelectItem key={topic} value={topic}>
-                  {topic}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+            <Select onValueChange={handleTopicChange} value={selectedTopic}>
+              <SelectTrigger className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {topics.map((topic) => (
+                  <SelectItem key={topic} value={topic}>
+                    {topic}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           {selectedTopic && (
@@ -190,7 +210,7 @@ const getQuestions = (): Question[] => {
                 </Card>
               )}
 
-              {questions.map((question: Question, questionIndex: number) => (
+              {questions.map((question, questionIndex) => (
                 <Card key={questionIndex} className="mb-6">
                   <CardHeader>
                     <CardTitle className="text-lg">Question {questionIndex + 1}</CardTitle>
@@ -199,25 +219,25 @@ const getQuestions = (): Question[] => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-3">
-                    {question.options.map((option: string, optionIndex: number) => {
+                    {question.options.map((option, optionIndex) => {
                       const isSelected = userAnswers[questionIndex] === option;
                       const isCorrect = submitted && option === question.answer;
                       const isWrong = submitted && isSelected && !isCorrect;
 
                       return (
                         <Card
-  key={optionIndex}
-  className={`cursor-pointer p-4 transition border ${
-    isCorrect
-      ? "border-green-600 bg-green-50 text-green-800"
-      : isWrong
-      ? "border-red-600 bg-red-50 text-red-800"
-      : isSelected
-      ? "border-blue-600 bg-blue-50 text-blue-800"
-      : ""
-  }`}
-  onClick={() => handleAnswerChange(questionIndex, option)}
->
+                          key={optionIndex}
+                          className={`cursor-pointer p-4 transition border ${
+                            isCorrect
+                              ? "border-green-600 bg-green-50 text-green-800"
+                              : isWrong
+                              ? "border-red-600 bg-red-50 text-red-800"
+                              : isSelected
+                              ? "border-blue-600 bg-blue-50 text-blue-800"
+                              : ""
+                          }`}
+                          onClick={() => handleAnswerChange(questionIndex, option)}
+                        >
                           <div className="flex items-center justify-between">
                             <span>{option}</span>
                             {submitted && isCorrect && (
@@ -242,14 +262,14 @@ const getQuestions = (): Question[] => {
                 </Card>
               ))}
 
-              {!submitted ? (
+              {questions.length > 0 && !submitted ? (
                 <Button
                   onClick={handleSubmit}
                   className="w-full"
                 >
                   Submit Answers
                 </Button>
-              ) : (
+              ) : questions.length > 0 && (
                 <Button
                   onClick={resetQuiz}
                   className="w-full"
