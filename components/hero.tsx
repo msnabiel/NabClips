@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, CirclePlay } from "lucide-react";
+import { ArrowUpRight, CirclePlay, FileText } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,14 +27,15 @@ const Hero = () => {
                 Start Practicing <ArrowUpRight className="!h-5 !w-5" />
               </Button>
             </Link>
-
+            <Link href="/cheat-sheet">
             <Button
               variant="outline"
               size="lg"
               className="w-full sm:w-auto rounded-full text-base shadow-none"
             >
-              <CirclePlay className="!h-5 !w-5" /> See Features
+              <FileText className="!h-5 !w-5" /> Docs
             </Button>
+            </Link>
           </div>
         </div>
         <div className="relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square">

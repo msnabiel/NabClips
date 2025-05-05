@@ -1,4 +1,6 @@
+import Link from "next/link";
 export const Logo = () => (
+  <Link href = "/">
   <svg
     id="logo-73"
     width="60"
@@ -16,4 +18,5 @@ export const Logo = () => (
       className="fill-foreground"
     />
   </svg>
+  </Link>
 );
