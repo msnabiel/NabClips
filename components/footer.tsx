@@ -6,7 +6,7 @@ import {
   TwitterIcon,
 } from "lucide-react";
 import Link from "next/link";
-
+{/*}
 const footerSections = [
   {
     title: "Product",
@@ -153,6 +153,33 @@ const footerSections = [
       },
     ],
   },
+];*/}
+const footerSections = [
+  {
+    title: "Quick Links",
+    links: [
+      {
+        title: "Home",
+        href: "/",
+      },
+      {
+        title: "Practice",
+        href: "/practice",
+      },
+      {
+        title: "Cheat Sheet",
+        href: "/cheat-sheet",
+      },
+      {
+        title: "Contact",
+        href: "/contact",
+      },
+      {
+        title: "GitHub",
+        href: "https://github.com/msnabiel/nabsts",
+      },
+    ],
+  },
 ];
 
 const Footer = () => {
@@ -182,6 +209,7 @@ const Footer = () => {
   </Link>
 
           <p className="mt-4 text-muted-foreground">
+          Built by Nabiel with ❤️.
             Design amazing digital experiences that create more happy in the
             world.
           </p>
@@ -213,7 +241,7 @@ const Footer = () => {
           <Link href="https://github.com/msnabiel/NabSTS" target="_blank">
             NabSTS
           </Link>
-          . All rights reserved. Buily by Nabiel with ❤️.
+          . All rights reserved. Built by Nabiel with ❤️.
         </span>
 
         <div className="flex items-center gap-5 text-muted-foreground">

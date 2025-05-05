@@ -50,14 +50,35 @@ import Footer from "@/components/footer";
 
 /*******  ac66a984-4220-4f52-9917-f3f7ddee41b7  *******/
 const QuizApp = () => {
-  const topics = Object.keys(questionsByTopic); // ✅ Step 1
+  const actualTopics = Object.keys(questionsByTopic); // Original topics
+  const ALL_TOPICS = "All Topics"; // Constant for "All Topics" option
+  const topics = [ALL_TOPICS, ...actualTopics];
 
-  const [selectedTopic, setSelectedTopic] = useState<string>(topics[0] || '');
+  const [selectedTopic, setSelectedTopic] = useState<string>(actualTopics[0] || '');
   const [userAnswers, setUserAnswers] = useState<{ [key: number]: string }>({});
   const [showAnswers, setShowAnswers] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [submitted, setSubmitted] = useState<boolean>(false);
 
+  // Get questions based on selected topic
+  // Define the Question type interface
+interface Question {
+  question: string;
+  options: string[];
+  answer: string;
+}
+
+const getQuestions = (): Question[] => {
+    if (selectedTopic === ALL_TOPICS) {
+      // Combine all questions from all topics
+      let allQuestions: Question[] = [];
+      actualTopics.forEach(topic => {
+        allQuestions = [...allQuestions, ...questionsByTopic[topic]];
+      });
+      return allQuestions;
+    }
+    return questionsByTopic[selectedTopic] || [];
+  };
 
   useEffect(() => {
     setUserAnswers({});
@@ -89,7 +110,7 @@ const QuizApp = () => {
     if (!selectedTopic) return;
 
     let correctCount = 0;
-    const questions = questionsByTopic[selectedTopic];
+    const questions = getQuestions();
 
     questions.forEach((question, index) => {
       if (userAnswers[index] === question.answer) {
@@ -108,10 +129,11 @@ const QuizApp = () => {
     setSubmitted(false);
   };
   
-
   const toggleShowAnswers = () => {
     setShowAnswers(prev => !prev);
   };
+
+  const questions = getQuestions();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -123,18 +145,17 @@ const QuizApp = () => {
 
           <div className="mb-8">
           <Select onValueChange={setSelectedTopic} value={selectedTopic}>
-  <SelectTrigger className="w-full">
-    <SelectValue />
-  </SelectTrigger>
-  <SelectContent>
-    {topics.map((topic) => (
-      <SelectItem key={topic} value={topic}>
-        {topic}
-      </SelectItem>
-    ))}
-  </SelectContent>
-</Select>
-
+            <SelectTrigger className="w-full">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {topics.map((topic) => (
+                <SelectItem key={topic} value={topic}>
+                  {topic}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           </div>
 
           {selectedTopic && (
@@ -158,18 +179,18 @@ const QuizApp = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center">
                       Quiz Results
-                      {score === questionsByTopic[selectedTopic].length && (
+                      {score === questions.length && (
                         <CheckCircle2 className="ml-2 text-green-500" />
                       )}
                     </CardTitle>
                     <CardDescription>
-                      You got {score} out of {questionsByTopic[selectedTopic].length} questions correct.
+                      You got {score} out of {questions.length} questions correct.
                     </CardDescription>
                   </CardHeader>
                 </Card>
               )}
 
-              {questionsByTopic[selectedTopic].map((question, questionIndex) => (
+              {questions.map((question: Question, questionIndex: number) => (
                 <Card key={questionIndex} className="mb-6">
                   <CardHeader>
                     <CardTitle className="text-lg">Question {questionIndex + 1}</CardTitle>
@@ -178,7 +199,7 @@ const QuizApp = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-3">
-                    {question.options.map((option, optionIndex) => {
+                    {question.options.map((option: string, optionIndex: number) => {
                       const isSelected = userAnswers[questionIndex] === option;
                       const isCorrect = submitted && option === question.answer;
                       const isWrong = submitted && isSelected && !isCorrect;
