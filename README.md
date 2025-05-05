@@ -1,66 +1,101 @@
-# Beautiful Shadcn UI Landing Page
+Here's a customized version of the README content for your NabSTS project:
 
-A modern, responsive landing page template built with Next.js, Tailwind CSS, and Shadcn UI, and Shadcn UI Blocks.
+---
+
+# NabSTS - Your STS Prep Companion
+
+A modern platform designed to help VIT students prepare for the STS (SoftSkills) exams. With curated MCQs, progress tracking, and focused study material, NabSTS is your ultimate companion for mastering the STS syllabus.
 
 ## Demo
 
-[Live Demo](https://shadcn-ui-landing-page.vercel.app/)
+[**Live Demo**](https://nabsts.vercel.app/)
 
 ## Preview
 
-![Preview](./public/page-preview.png)
+![NabSTS Preview](./public/nabsts-preview.png)
 
 ## Features
 
-- 🎨 Modern and clean design
-- 📱 Fully responsive layout
-- 🎯 Built with Next.js 15
-- 💅 Styled with Tailwind CSS `3.4` & `4.0`
-- 🧩 Built with [Shadcn UI](https://ui.shadcn.com) and [Shadcn UI Blocks](https://shadcnui-blocks.com)
-- 🌙 Dark mode support
+ 🎯 *Curated MCQs** to practice and test your knowledge
+
+ 📊 *Track your progress** and monitor your improvements
+
+ 📚 Focused study material tailored for *VIT students**
+
+ 🏆 Leaderboards to *compare your performance** with others
+
+ 🌙 *Dark mode support** for a comfortable study experience
+
+* ⏱️ Timer to track the time spent on quizzes
+
+ 💡 *Results sharing** feature to showcase your progress
 
 ## Getting Started
 
-1. Clone the repository:
+Follow these steps to get up and running with NabSTS:
+
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/akash3444/shadcn-ui-landing-page.git
-cd shadcn-ui-landing-page
+
+git clone https://github.com/msnabiel/nabsts.git
+
+cd nabsts
+
 ```
 
-2. To use Tailwind CSS v4.0:
-
-- Ensure you’re using Node.js 20 or higher.
-- Switch to the tailwind-v4 branch:
+### 2. Install dependencies
 
 ```bash
-git checkout tailwind-v4
-```
 
-3. Install dependencies:
-
-```bash
 npm install
+
 ```
 
-4. Start the development server:
+### 3. Set up your environment variables
+
+Create a .env file in the root directory and add your environment variables (such as Supabase credentials for storing quiz results):
 
 ```bash
-npm run dev
+
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+### 4. Start the development server
+
+```bash
+
+npm run dev
+
+```
+
+### 5. Open in your browser
+
+Visit [http://localhost:3000](http://localhost:3000) to access the app.
 
 ## Customization
 
-1. Replace the placeholder images with your own content.
-2. Modify the text and styles in the components to match your brand and messaging.
-3. Add your own features and sections as needed.
+1. Replace default images and media with your own content.
 
-## Why this template?
+2. Modify the quiz content to add more questions or customize the existing ones.
 
-This project is a base template for a landing page. It is built with Next.js, Tailwind CSS, Shadcn UI, and Shadcn UI Blocks. It is a great starting point for a landing page. You can customized the content and media files as per your needs. It is not intended to be a complete solution for a landing page. It is intended to be a starting point for a landing page.
+3. Adjust styling to match your branding or preferences.
+
+4. Add additional features, such as new quiz categories or enhanced leaderboard functionality.
+
+## Why NabSTS?
+
+NabSTS was built specifically for VIT students, keeping in mind the needs and preferences of the community. It provides a clean, intuitive platform to practice, track, and improve your STS exam scores.
 
 ## Contributing
 
-If you have any suggestions or improvements, please create an issue or submit a pull request.
+We welcome contributions from the community! If you have suggestions, bug fixes, or feature enhancements, feel free to:
+
+1. Open an issue or
+
+2. Submit a pull request.
+
+---
