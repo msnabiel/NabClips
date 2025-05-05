@@ -1,8 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, FileText } from "lucide-react";
-import Image from "next/image";
+//import Image from "next/image";
 import Link from "next/link";
+import Spline from '@splinetool/react-spline/next';
 
 const Hero = () => {
   return (
@@ -39,12 +40,15 @@ const Hero = () => {
           </div>
         </div>
         <div className="relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square">
-          <Image
+          {/*<Image
             src="/placeholder.svg" // Replace with a relevant image if available
             fill
             alt="NabSTS Preview"
             className="object-cover rounded-xl"
-          />
+          />*/}
+         <Spline
+        scene="https://prod.spline.design/aEiUQHZcIWEDlaxZ/scene.splinecode" 
+      />
         </div>
       </div>
     </div>
