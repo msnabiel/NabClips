@@ -19,7 +19,9 @@ const Home = () => {
             <div className="w-full max-w-xs bg-card text-card-foreground shadow-lg rounded-xl p-6 text-center hover:shadow-xl transition-all">
               <h3 className="text-xl font-semibold mb-4">Leaderboard</h3>
               <p className="text-muted-foreground mb-4">View the top scorers and their achievements!</p>
-              <Button variant="outline" className="w-full">Go to Leaderboard</Button>
+              <Link href="/leaderboard">
+                <Button variant="outline" className="w-full">Go to Leaderboard</Button>
+              </Link>
             </div>
           </div>
           {/* Ranked Tests Card */}
