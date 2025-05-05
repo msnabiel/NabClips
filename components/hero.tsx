@@ -39,14 +39,15 @@ const Hero = () => {
             </Link>
           </div>
         </div>
-        <div className="relative w-full aspect-[4/3] sm:aspect-square lg:aspect-[16/9] rounded-xl overflow-hidden">
+        <div className="relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square overflow-hidden">
+
           {/*<Image
             src="/placeholder.svg" // Replace with a relevant image if available
             fill
             alt="NabSTS Preview"
             className="object-cover rounded-xl"
           />*/}
-         <Spline
+          <Spline
         scene="https://prod.spline.design/aEiUQHZcIWEDlaxZ/scene.splinecode" 
       />
         </div>
