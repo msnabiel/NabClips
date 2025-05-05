@@ -26,28 +26,28 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    siteName: "Shadcn Landing Page",
+    siteName: "NabSTS",
     locale: "en_US",
-    url: "https://shadcn-landing-page.vercel.app",
-    title: "Shadcn Landing Page",
+    url: "",
+    title: "NabSTS- Your STS Prep Companion",
     description:
-      "A beautiful landing page built with Shadcn UI, Next.js 15, Tailwind CSS, and Shadcn UI Blocks.",
+      "Practice curated MCQs, track your progress, and master the STS syllabus with focused study material—all built by a VIT student for VIT students.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Shadcn UI Landing Page Preview",
+        alt: "NabSTS- Your STS Prep Companion",
       },
     ],
   },
   authors: [
     {
-      name: "Akash Moradiya",
-      url: "https://shadcnui-blocks.com",
+      name: "Nabiel",
+      url: "https://nabiel.vercel.app",
     },
   ],
-  creator: "Akash Moradiya",
+  creator: "Nabiel",
   icons: [
     {
       rel: "icon",

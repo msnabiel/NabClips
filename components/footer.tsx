@@ -161,7 +161,8 @@ const Footer = () => {
       <div className="max-w-screen-xl mx-auto py-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-x-8 gap-y-10 px-6">
         <div className="col-span-full xl:col-span-2">
           {/* Logo */}
-          <svg
+          <Link href = "/">
+  <svg
     id="logo-73"
     width="60"
     height="40"
@@ -178,6 +179,7 @@ const Footer = () => {
       className="fill-foreground"
     />
   </svg>
+  </Link>
 
           <p className="mt-4 text-muted-foreground">
             Design amazing digital experiences that create more happy in the
@@ -211,7 +213,7 @@ const Footer = () => {
           <Link href="https://github.com/msnabiel/NabSTS" target="_blank">
             NabSTS
           </Link>
-          . All rights reserved.
+          . All rights reserved. Buily by Nabiel with ❤️.
         </span>
 
         <div className="flex items-center gap-5 text-muted-foreground">
