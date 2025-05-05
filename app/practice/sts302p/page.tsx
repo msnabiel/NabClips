@@ -50,9 +50,9 @@ import Footer from "@/components/footer";
 
 /*******  ac66a984-4220-4f52-9917-f3f7ddee41b7  *******/
 const QuizApp = () => {
-    const topics = Object.keys(questionsByTopic); // ✅ Step 1
+  const topics = Object.keys(questionsByTopic); // ✅ Step 1
 
-    const [selectedTopic, setSelectedTopic] = useState<string>(topics[0] || '');
+  const [selectedTopic, setSelectedTopic] = useState<string>(topics[0] || '');
   const [userAnswers, setUserAnswers] = useState<{ [key: number]: string }>({});
   const [showAnswers, setShowAnswers] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
@@ -221,16 +221,20 @@ const QuizApp = () => {
                 </Card>
               ))}
 
-              {!submitted && (
+              {!submitted ? (
                 <Button
                   onClick={handleSubmit}
                   className="w-full"
-                  disabled={
-                    Object.keys(userAnswers).length !==
-                    questionsByTopic[selectedTopic].length
-                  }
                 >
                   Submit Answers
+                </Button>
+              ) : (
+                <Button
+                  onClick={resetQuiz}
+                  className="w-full"
+                  variant="outline"
+                >
+                  Reset Quiz
                 </Button>
               )}
             </>
