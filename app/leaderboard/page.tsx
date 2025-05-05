@@ -24,54 +24,70 @@ import { Medal, Clock, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@supabase/supabase-js";
 
+// ✅ Type for each quiz result
+type QuizResult = {
+  name: string;
+  score: number;
+  time_taken: number;
+  timestamp: string;
+  course: string;
+};
+
+// ✅ Supabase client
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
 const Home = () => {
-  const [quizResults, setQuizResults] = useState([]);
+  const [quizResults, setQuizResults] = useState<QuizResult[]>([]);
   const [loading, setLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+
+  // ✅ Function to fetch leaderboard results
+  const fetchQuizResults = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from("quiz_sts")
+        .select("*")
+        .eq("course", "sts302p")
+        .order("score", { ascending: false })
+        .order("time_taken", { ascending: true });
+
+      if (error) throw error;
+
+      setQuizResults(data || []);
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      console.error("Error fetching quiz results:", errorMessage);
+      setError(errorMessage);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    
-    const fetchQuizResults = async () => {
-      try {
-        setLoading(true);
-        const { data, error } = await supabase
-          .from("quiz_sts")
-          .select("*")
-          .eq("course", "sts302p")
-          .order("score", { ascending: false })
-          .order("time_taken", { ascending: true });
-
-        if (error) {
-          throw error;
-        }
-
-        setQuizResults(data || []);
-      } catch (err) {
-        console.error("Error fetching quiz results:", err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchQuizResults();
   }, []);
 
-  // Function to format time in minutes:seconds
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  // ✅ Manual refresh
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    await fetchQuizResults();
+    setIsRefreshing(false);
   };
 
-  // Get medal color based on rank
-  const getMedalColor = (rank) => {
+  // ✅ Format seconds into MM:SS
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  };
+
+  // ✅ Medal color by rank
+  const getMedalColor = (rank: number): string => {
     switch (rank) {
       case 1:
         return "text-yellow-500";
@@ -83,35 +99,17 @@ const Home = () => {
         return "text-slate-700";
     }
   };
-  const handleRefresh = async () => {
-    setIsRefreshing(true);
-    try {
-      const { data, error } = await supabase
-        .from("quiz_sts")
-        .select("*")
-        .eq("course", "sts302p")
-        .order("score", { ascending: false })
-        .order("time_taken", { ascending: true });
-  
-      if (error) throw error;
-  
-      setQuizResults(data || []);
-    } catch (err) {
-      console.error("Error refreshing quiz results:", err);
-      setError(err.message);
-    } finally {
-      setIsRefreshing(false);
-    }
-  };
-  
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      
+
       <main className="flex-1 container mx-auto px-4 py-8 max-w-4xl">
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="text-3xl font-bold text-center">STS302P Quiz Leaderboard</CardTitle>
+            <CardTitle className="text-3xl font-bold text-center">
+              STS302P Quiz Leaderboard
+            </CardTitle>
             <CardDescription className="text-center text-lg">
               Test your knowledge and see how you rank!
             </CardDescription>
@@ -141,14 +139,16 @@ const Home = () => {
                     Ranked by highest score and fastest completion time
                   </CardDescription>
                 </div>
-                <Button 
-                  variant="outline" 
-                  size="icon" 
-                  onClick={handleRefresh} 
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={handleRefresh}
                   disabled={isRefreshing}
                   className="h-9 w-9"
                 >
-                  <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                  <RefreshCw
+                    className={`h-4 w-4 ${isRefreshing ? "animate-spin" : ""}`}
+                  />
                   <span className="sr-only">Refresh</span>
                 </Button>
               </div>
@@ -172,7 +172,9 @@ const Home = () => {
                         <div className="flex items-center gap-1">
                           {index + 1}
                           {index < 3 && (
-                            <Medal className={`h-4 w-4 ${getMedalColor(index + 1)}`} />
+                            <Medal
+                              className={`h-4 w-4 ${getMedalColor(index + 1)}`}
+                            />
                           )}
                         </div>
                       </TableCell>
@@ -183,7 +185,11 @@ const Home = () => {
                         {formatTime(result.time_taken)}
                       </TableCell>
                       <TableCell className="text-right">
-                        {new Date(result.timestamp).toLocaleDateString()}
+                        {new Date(result.timestamp).toLocaleDateString("en-IN", {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                        })}
                       </TableCell>
                     </TableRow>
                   ))}
