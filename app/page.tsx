@@ -3,7 +3,8 @@
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import { Navbar } from "@/components/navbar";
-import NabSTSsCourse from "@/components/course-code";
+//import NabSTSsCourse from "@/components/course-code";
+import Downloads from "@/components/downloads";
 //import Testimonial from "@/components/testimonial";
 //import { Card } from "@/components/ui/card";
 //import { Button } from "@/components/ui/button";
@@ -35,7 +36,7 @@ export default function Home() {
       {/*<Features />
       <FAQ />
       <Testimonial />*/}
-      < NabSTSsCourse />
+      <Downloads />
       <Footer />
     </>
   );

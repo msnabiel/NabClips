@@ -11,31 +11,6 @@ const features = [
   },
 ];
 
-/*************  ✨ Windsurf Command ⭐  *************/
-/**
- * Downloads component.
- *
- * Downloads is a component that renders a section of the app containing a
- * list of courses, each with a downloadable resource.
- *
- * It expects a list of features, each containing the following properties:
- *
- * - `icon`: a React component to use as the icon for the feature
- * - `title`: a string to use as the title for the feature
- * - `description`: a string to use as the description for the feature
- * - `file`: a string to use as the href for the feature's downloadable resource
- *
- * The component renders a heading with the title "Select a Course to Download
- * Resources", followed by a grid of cards, each containing a feature. The
- * cards are rendered with a hover effect, and the icon, title, and description
- * are centered horizontally.
- *
- * The component also renders a CardFooter with a background color of
- * `bg-muted` and a height of `52px`.
- *
- * @returns {JSX.Element} The Downloads component.
- */
-/*******  5ea65d2c-a013-47c2-81d0-fc08137521f0  *******/
 const Downloads = () => {
   return (
     <div
