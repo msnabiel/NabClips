@@ -1,43 +1,43 @@
-//import FAQ from "@/components/faq";
-//import Features from "@/components/features";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import { Navbar } from "@/components/navbar";
-//import NabSTSsCourse from "@/components/course-code";
 import Downloads from "@/components/downloads";
-//import Testimonial from "@/components/testimonial";
-//import { Card } from "@/components/ui/card";
-//import { Button } from "@/components/ui/button";
-{/*
-{/* Code Retrieval Section
-<Card className="p-6 space-y-4">
-<div>
-  <h2 className="text-xl font-semibold mb-3">Retrieve Saved Clip by Code</h2>
-  <div className="flex gap-3 items-center">
-    <input
-      type="text"
-      value={inputCode}
-      onChange={(e) => setInputCode(e.target.value)}
-      placeholder="Enter 4-digit code"
-      className="border px-3 py-2 text-base rounded-md h-10"
-      maxLength={4}
-    />
-    <Button onClick={handleRetrieve} variant="outline" className="h-10">
-      Retrieve
-    </Button>
-  </div>
-</div>
-</Card>*/}
-export default function Home() {
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+// import other components as needed
+
+const Home = () => {
   return (
     <>
       <Navbar />
       <Hero />
-      {/*<Features />
-      <FAQ />
-      <Testimonial />*/}
+      {/* New Section with Leaderboard and Ranked Tests */}
+      <section className="py-12 bg-background">
+        <div className="max-w-screen-xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+          {/* Leaderboard Card */}
+          <div className="flex justify-center">
+            <div className="w-full max-w-xs bg-card text-card-foreground shadow-lg rounded-xl p-6 text-center hover:shadow-xl transition-all">
+              <h3 className="text-xl font-semibold mb-4">Leaderboard</h3>
+              <p className="text-muted-foreground mb-4">View the top scorers and their achievements!</p>
+              <Button variant="outline" className="w-full">Go to Leaderboard</Button>
+            </div>
+          </div>
+          {/* Ranked Tests Card */}
+          <div className="flex justify-center">
+            <div className="w-full max-w-xs bg-card text-card-foreground shadow-lg rounded-xl p-6 text-center hover:shadow-xl transition-all">
+              <h3 className="text-xl font-semibold mb-4">Ranked Tests</h3>
+              <p className="text-muted-foreground mb-4">Take tests and challenge your rank against others!</p>
+              <Link href="/ranked-test-sts302p">
+              <Button variant="outline" className="w-full">Start Ranked Test</Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
       <Downloads />
       <Footer />
     </>
   );
-}
+};
+
+export default Home;
