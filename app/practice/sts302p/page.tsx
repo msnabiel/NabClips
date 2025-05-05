@@ -185,18 +185,18 @@ const QuizApp = () => {
 
                       return (
                         <Card
-                          key={optionIndex}
-                          className={`cursor-pointer p-4 transition border ${
-                            isCorrect
-                              ? "border-green-600 bg-green-50"
-                              : isWrong
-                              ? "border-red-600 bg-red-50"
-                              : isSelected
-                              ? "border-blue-600 bg-blue-50"
-                              : ""
-                          }`}
-                          onClick={() => handleAnswerChange(questionIndex, option)}
-                        >
+  key={optionIndex}
+  className={`cursor-pointer p-4 transition border ${
+    isCorrect
+      ? "border-green-600 bg-green-50 text-green-800"
+      : isWrong
+      ? "border-red-600 bg-red-50 text-red-800"
+      : isSelected
+      ? "border-blue-600 bg-blue-50 text-blue-800"
+      : ""
+  }`}
+  onClick={() => handleAnswerChange(questionIndex, option)}
+>
                           <div className="flex items-center justify-between">
                             <span>{option}</span>
                             {submitted && isCorrect && (
