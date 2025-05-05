@@ -1,9 +1,10 @@
-import FAQ from "@/components/faq";
-import Features from "@/components/features";
+//import FAQ from "@/components/faq";
+//import Features from "@/components/features";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import { Navbar } from "@/components/navbar";
-import Testimonial from "@/components/testimonial";
+import NabSTSsCourse from "@/components/course-code";
+//import Testimonial from "@/components/testimonial";
 //import { Card } from "@/components/ui/card";
 //import { Button } from "@/components/ui/button";
 {/*
@@ -31,9 +32,10 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <Features />
+      {/*<Features />
       <FAQ />
-      <Testimonial />
+      <Testimonial />*/}
+      < NabSTSsCourse />
       <Footer />
     </>
   );
