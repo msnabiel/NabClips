@@ -208,7 +208,7 @@ const Footer = () => {
         {/* Copyright */}
         <span className="text-muted-foreground text-center xs:text-start">
           &copy; {new Date().getFullYear()}{" "}
-          <Link href="https://shadcnui-blocks.com" target="_blank">
+          <Link href="https://github.com/msnabiel/NabSTS" target="_blank">
             NabSTS
           </Link>
           . All rights reserved.
