@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ClipboardCopy } from "lucide-react";
+import Image from 'next/image';
 
 const features = [
   {
@@ -30,7 +31,7 @@ const Downloads = () => {
           >
             <Card className="flex flex-col border rounded-xl overflow-hidden shadow-none transition-transform hover:scale-105">
               <CardHeader className="p-6 flex flex-col items-center">
-                <feature.icon className="h-12 w-12 text-accent" />
+              <feature.icon className="h-12 w-12 text-blue-500" />
                 <h4 className="mt-3 text-xl font-bold tracking-tight text-center">
                   {feature.title}
                 </h4>
@@ -39,7 +40,15 @@ const Downloads = () => {
                 </p>
               </CardHeader>
               <CardContent className="mt-auto px-0 pb-0">
-                <div className="bg-muted h-52 ml-6 rounded-tl-xl" />
+                <div className="relative w-full h-52">
+                  <Image
+                    src="/coding.png" // Replace with the actual image path
+                    alt="Download Resource" // Suitable alt text
+                    layout="fill" // Makes image take up the full container
+                    objectFit="cover" // Ensures the image covers the container properly without distortion
+                    className="rounded-tl-xl" // Tailwind CSS class for rounded top-left corners
+                  />
+                </div>
               </CardContent>
             </Card>
           </a>
