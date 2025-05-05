@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -94,6 +95,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useEffect(() => {
+    // Vercel Analytics will be automatically initialized
+    Analytics();
+  }, []);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
