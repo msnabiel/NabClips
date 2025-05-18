@@ -1,4 +1,3 @@
-Here's a customized version of the README content for your NabSTS project:
 
 ---
 
